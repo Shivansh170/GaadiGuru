@@ -7,7 +7,7 @@ export default function Brands() {
   useEffect(() => {
     async function fetchDetails() {
       try {
-        const res = await fetch("http://localhost:3000/api");
+        const res = await fetch("http://localhost:3000/api/brands");
         const data = await res.json();
         setBrands(data);
       } catch (err) {
