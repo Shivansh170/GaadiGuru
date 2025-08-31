@@ -5,11 +5,15 @@ export default function Navbar() {
   return (
     <>
       {/* ====== Header Wrapper ====== */}
-      <header className="flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
+      <header className="flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-2 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
         <div className="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
           {/* ====== Desktop Logo ====== */}
-          <Link to="/" className="max-sm:hidden">
-            <img src={logo} alt="logo" className="w-24 h-20 rounded-full" />
+          <Link
+            to="/"
+            className="max-sm:hidden flex items-center text-2xl font-bold"
+          >
+            <img src={logo} alt="logo" className="w-20 h-16 rounded-full" />
+            <h1 className="text-orange-500">GaadiGuru</h1>
           </Link>
 
           {/* ====== Mobile Logo ====== */}

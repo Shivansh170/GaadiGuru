@@ -21,7 +21,7 @@ export default function Cities() {
           </h1>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="w-10/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {cities.map((e) => (
               <Citycard key={e._id} city={e} />
             ))}
