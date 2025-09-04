@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { BrandContext } from "../context/BrandContext";
 
 export default function Brandscard({ name, url, carsLaunchedInIndia, logo }) {
-  const { brandName, setBrandName } = useContext(BrandContext);
   return (
     <div className="w-full sm:w-72 bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
       <img
@@ -31,7 +29,7 @@ export default function Brandscard({ name, url, carsLaunchedInIndia, logo }) {
           Visit Website
         </Link>
         <Link
-          to="/models"
+          to={`/models/${name}`}
           rel="noopener noreferrer"
           className="block mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
           onClick={() => {

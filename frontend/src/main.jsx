@@ -6,20 +6,31 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage.jsx";
 import Brands from "./components/Brands.jsx";
 import Models from "./pages/Models.jsx";
-import BrandProvider from "./context/BrandProvider.jsx";
+import Onroadprice from "./components/Onroadprice.jsx";
+import PriceProvider from "./context/PriceProvider.jsx";
+import FinalPrice from "./components/FinalPrice.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrandProvider>
+    <PriceProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/" index element={<Homepage />} />
             <Route path="brands" element={<Brands />} />
-            <Route path="/models" element={<Models />} />
+            <Route path="/models/:brandName" element={<Models />} />
+            <Route path="Onroadprice" element={<Onroadprice />} />
+            <Route
+              path="Onroadprice/calculatedPrice"
+              element={<FinalPrice />}
+            />
+            <Route
+              path="/models/:brandName/finalprice"
+              element={<FinalPrice />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
-    </BrandProvider>
+    </PriceProvider>
   </StrictMode>
 );

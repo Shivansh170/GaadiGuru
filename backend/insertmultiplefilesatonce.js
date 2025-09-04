@@ -17,7 +17,7 @@ mongoose
   });
 
 // Define your schema and model
-const mahindraSchema = new mongoose.Schema({
+const mgSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -52,17 +52,17 @@ const mahindraSchema = new mongoose.Schema({
   },
   bodyType: {
     type: String,
-    enum: ["Hatchback", "Sedan", "SUV", "MUV", "Van"],
+    enum: ["Hatchback", "Sedan", "SUV", "MUV", "Van", "MPV", "Pickup"],
   },
   engineCC: {
     type: Number,
-    min: 600, // smallest Maruti engines
-    max: 2200, // generally they don’t go above 2.0L
+    min: 0, // smallest Maruti engines
+    max: 4000, // generally they don’t go above 2.0L
   },
   mileage: {
     type: Number,
     min: 5,
-    max: 50, // realistic range (km/l)
+    max: 600, // realistic range (km/l)
   },
   showRoomPrice: {
     type: Number,
@@ -80,134 +80,102 @@ const mahindraSchema = new mongoose.Schema({
   },
 });
 
-const mahindraCar = mongoose.model("mahindraCar", mahindraSchema);
+const mgCar = mongoose.model("mgCar", mgSchema);
 
 async function insertCars() {
-  const mahindraCars = [
+  const mgCars = [
     {
-      name: "Mahindra Thar",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/Thar-red.png",
-      fuelType: "Petrol",
-      transmission: "Manual",
-      seatingCapacity: 4,
-      bodyType: "SUV",
-      engineCC: 2198,
-      mileage: 15,
-      showRoomPrice: 1200000,
-      launchYear: 2021,
-      createdAt: "2025-08-28T04:16:28.150+00:00",
-      __v: 0,
-    },
-    {
-      name: "Mahindra XUV700",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/XUV700-grey.png",
-      fuelType: "Diesel",
-      transmission: "Automatic",
-      seatingCapacity: 7,
-      bodyType: "SUV",
-      engineCC: 2198,
-      mileage: 16,
-      showRoomPrice: 2500000,
-      launchYear: 2021,
-      createdAt: "2025-08-28T04:19:35.385+00:00",
-      __v: 0,
-    },
-    {
-      name: "Mahindra XUV300",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/XUV300-blue.png",
+      name: "MG Hector",
+      imageUrl: "https://www.mgmotor.co.in/vehicles/mghector",
       fuelType: "Petrol",
       transmission: "Manual",
       seatingCapacity: 5,
       bodyType: "SUV",
-      engineCC: 1197,
-      mileage: 17,
-      showRoomPrice: 900000,
-      launchYear: 2020,
-      createdAt: "2025-08-28T04:20:53.817+00:00",
-      __v: 0,
-    },
-    {
-      name: "Mahindra Scorpio",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/Scorpio-green.png",
-      fuelType: "Diesel",
-      transmission: "Manual",
-      seatingCapacity: 7,
-      bodyType: "SUV",
-      engineCC: 2184,
-      mileage: 15,
-      showRoomPrice: 1300000,
-      launchYear: 2021,
-      createdAt: "2025-08-28T04:21:36.005+00:00",
-      __v: 0,
-    },
-    {
-      name: "Mahindra Marazzo",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/Marazzo-blue.png",
-      fuelType: "Diesel",
-      transmission: "Manual",
-      seatingCapacity: 7,
-      bodyType: "MUV",
-      engineCC: 1497,
-      mileage: 17,
-      showRoomPrice: 1500000,
-      launchYear: 2021,
-      createdAt: "2025-08-28T04:21:59.499+00:00",
-      __v: 0,
-    },
-    {
-      name: "Mahindra Bolero",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/Bolero-yellow.png",
-      fuelType: "Diesel",
-      transmission: "Manual",
-      seatingCapacity: 7,
-      bodyType: "SUV",
-      engineCC: 1493,
-      mileage: 16,
-      showRoomPrice: 900000,
-      launchYear: 2020,
-      createdAt: "2025-08-28T04:22:14.990+00:00",
-      __v: 0,
-    },
-    {
-      name: "Mahindra TUV300",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/TUV300-orange.png",
-      fuelType: "Diesel",
-      transmission: "Manual",
-      seatingCapacity: 7,
-      bodyType: "SUV",
-      engineCC: 1493,
+      engineCC: 1498,
       mileage: 18,
-      showRoomPrice: 850000,
-      launchYear: 2021,
-      createdAt: "2025-08-28T04:22:31.231+00:00",
-      __v: 0,
+      showRoomPrice: 1449000,
+      launchYear: 2019,
     },
     {
-      name: "Mahindra Alturas G4",
-      imageUrl:
-        "https://www.autovista.in/assets/img/new_cars_colour_variants/Alturas-white.png",
+      name: "MG Astor",
+      imageUrl: "https://www.mgmotor.co.in/vehicles/mgastor",
+      fuelType: "Petrol",
+      transmission: "Manual",
+      seatingCapacity: 5,
+      bodyType: "SUV",
+      engineCC: 1498,
+      mileage: 17,
+      showRoomPrice: 999000,
+      launchYear: 2021,
+    },
+    {
+      name: "MG Gloster",
+      imageUrl: "https://www.mgmotor.co.in/vehicles/mggloster",
       fuelType: "Diesel",
       transmission: "Automatic",
       seatingCapacity: 7,
       bodyType: "SUV",
-      engineCC: 2159,
+      engineCC: 1996,
       mileage: 12,
-      showRoomPrice: 3000000,
-      launchYear: 2021,
-      createdAt: "2025-08-28T04:22:52.231+00:00",
-      __v: 0,
+      showRoomPrice: 4107000,
+      launchYear: 2020,
+    },
+    {
+      name: "MG ZS EV",
+      imageUrl:
+        "https://www.mgmotor.co.in/vehicles/mgzs-ev-electric-car-in-india",
+      fuelType: "Electric",
+      transmission: "Automatic",
+      seatingCapacity: 5,
+      bodyType: "SUV",
+      engineCC: 0,
+      mileage: 460, // approximate range in km
+      showRoomPrice: 1300000,
+      launchYear: 2020,
+    },
+    {
+      name: "MG Comet EV",
+      imageUrl:
+        "https://www.mgmotor.co.in/vehicles/mgcomet-ev-electric-car-in-india",
+      fuelType: "Electric",
+      transmission: "Automatic",
+      seatingCapacity: 4,
+      bodyType: "Hatchback",
+      engineCC: 0,
+      mileage: 300, // approximate range in km
+      showRoomPrice: 499000,
+      launchYear: 2022,
+    },
+    {
+      name: "MG Windsor EV",
+      imageUrl:
+        "https://www.mgmotor.co.in/vehicles/mgwindsor-ev-electric-car-in-india",
+      fuelType: "Electric",
+      transmission: "Automatic",
+      seatingCapacity: 4,
+      bodyType: "Hatchback",
+      engineCC: 0,
+      mileage: 360,
+      showRoomPrice: 999000,
+      launchYear: 2023,
+    },
+    {
+      name: "MG M9 (Mifa 9)",
+      imageUrl:
+        "https://www.mgmotor.co.in/vehicles/mgwindsor-ev-electric-car-in-india", // Placeholder
+      fuelType: "Electric",
+      transmission: "Automatic",
+      seatingCapacity: 7,
+      bodyType: "MUV",
+      engineCC: 3500,
+      mileage: 565,
+      showRoomPrice: 10000000,
+      launchYear: 2025,
     },
   ];
 
   try {
-    const result = await mahindraCar.insertMany(mahindraCars);
+    const result = await mgCar.insertMany(mgCars);
     console.log(`${result.length} cars were inserted successfully.`);
   } catch (error) {
     console.error("Error inserting cars:", error);
