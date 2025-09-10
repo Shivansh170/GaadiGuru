@@ -1,149 +1,156 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [showMenu, toggleShowMenu] = useState(false);
+
   return (
-    <>
-      {/* ====== Header Wrapper ====== */}
-      <header className="flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-2 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
-        <div className="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
-          {/* ====== Desktop Logo ====== */}
+    <header className="flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-2 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
+      <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
+        {/* ====== Left: Logo ====== */}
+        <Link to="/" className="flex items-center text-2xl font-bold">
+          <img src={logo} alt="logo" className="w-20 h-16 rounded-full" />
+          <h1 className="text-orange-500 ml-2 hidden sm:block">GaadiGuru</h1>
+        </Link>
+
+        {/* ====== Middle: Links (only large screens) ====== */}
+        <nav className="hidden lg:flex flex-1 justify-center gap-x-8 text-base font-medium">
           <Link
             to="/"
-            className="max-sm:hidden flex items-center text-2xl font-bold"
+            className="text-orange-500 hover:text-orange-600 transition"
           >
-            <img src={logo} alt="logo" className="w-20 h-16 rounded-full" />
-            <h1 className="text-orange-500">GaadiGuru</h1>
+            Home
           </Link>
-
-          {/* ====== Mobile Logo ====== */}
-          <Link to="/" className="hidden max-sm:block">
-            <img src={logo} alt="logo" className="w-9" />
-          </Link>
-
-          {/* ====== Collapsible Menu (for small screens) ====== */}
-          <div
-            id="collapseMenu"
-            className="max-lg:hidden lg:!block 
-            max-lg:before:fixed max-lg:before:bg-black 
-            max-lg:before:opacity-50 max-lg:before:inset-0 
-            max-lg:before:z-50"
+          <Link
+            to="/brands"
+            className="text-slate-900 hover:text-orange-500 transition"
           >
-            {/* ====== Close Button (only in mobile) ====== */}
-            <button
-              id="toggleClose"
-              className="lg:hidden fixed top-2 right-4 z-[100] 
-              rounded-full bg-white w-9 h-9 flex items-center 
-              justify-center border border-gray-200 cursor-pointer"
-            >
-              {/* Cross Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-3.5 h-3.5 fill-orange-500"
-                viewBox="0 0 320.591 320.591"
-              >
-                <path d="M30.391 318.583a30.37 ..."></path>
-                <path d="M287.9 318.583a30.37 ..."></path>
-              </svg>
-            </button>
+            Brands
+          </Link>
+          <Link
+            to="/Onroadprice"
+            className="text-slate-900 hover:text-orange-500 transition"
+          >
+            Get OnRoad Price
+          </Link>
+          <Link
+            to="/about"
+            className="text-slate-900 hover:text-orange-500 transition"
+          >
+            About
+          </Link>
+        </nav>
 
-            {/* ====== Navbar Links List ====== */}
-            <ul
-              className="lg:flex gap-x-5 
-              max-lg:space-y-3 max-lg:fixed max-lg:bg-white 
-              max-lg:w-1/2 max-lg:min-w-[300px] 
-              max-lg:top-0 max-lg:left-0 max-lg:p-6 
-              max-lg:h-full max-lg:shadow-md 
-              max-lg:overflow-auto z-50"
-            >
-              {/* Mobile Logo inside menu */}
-              <li className="mb-6 hidden max-lg:block">
-                <Link to="/">
-                  <img src={logo} alt="logo" className="w-36" />
-                </Link>
-              </li>
-
-              {/* Home Link */}
-              <li className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
-                <Link to="/">
-                  <button className="hover:text-orange-500 text-orange-500 font-medium block text-base">
-                    Home
-                  </button>
-                </Link>
-              </li>
-
-              {/* Brands Link */}
-              <li className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
-                <Link to="brands">
-                  <button className="hover:text-orange-500 text-slate-900 font-medium block text-base">
-                    Brands
-                  </button>
-                </Link>
-              </li>
-
-              {/* On Road Price Link */}
-              <li className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
-                <Link
-                  to="Onroadprice"
-                  className="hover:text-orange-500 text-slate-900 font-medium block text-base"
-                >
-                  Get OnRoad Price
-                </Link>
-              </li>
-
-              {/* About Link */}
-              <li className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
-                <Link
-                  to="about"
-                  className="hover:text-orange-500 text-slate-900 font-medium block text-base"
-                >
-                  About
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* ====== Right Side Buttons (Desktop) ====== */}
-          <div className="flex items-center max-lg:ml-auto space-x-4">
-            {/* Profile/Login Button */}
+        {/* ====== Right: Profile/Login (desktop) + Hamburger (mobile) ====== */}
+        <div className="flex items-center gap-4">
+          {/* Profile Button (desktop only) */}
+          <Link to="/login">
             <button
               type="button"
-              className="hidden bg-orange-500 hover:bg-orange-500 
-              px-4 py-3 rounded-full text-white text-[15px] font-medium 
-              lg:flex items-center justify-center gap-2 cursor-pointer"
+              className="hidden lg:flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full text-white text-[15px] font-medium transition"
             >
-              {/* Person Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="18"
+                height="18"
                 fill="currentColor"
                 className="bi bi-person-circle"
                 viewBox="0 0 16 16"
               >
-                <path d="M11 6a3 3 0 1 1-6 0 ..." />
-                <path d="M0 8a8 8 0 1 1 16 0 ..." />
-              </svg>
-            </button>
-
-            {/* Hamburger Menu Button (Mobile) */}
-            <button id="toggleOpen" className="lg:hidden cursor-pointer">
-              <svg
-                className="w-7 h-7"
-                fill="#000"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                 <path
                   fillRule="evenodd"
-                  d="M3 5a1 1 0 ..."
-                  clipRule="evenodd"
-                ></path>
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.226 5.468 2.37A7 7 0 0 0 8 1z"
+                />
               </svg>
+              Profile
             </button>
-          </div>
+          </Link>
+
+          {/* Hamburger (mobile only) */}
+          <button
+            className="lg:hidden cursor-pointer"
+            onClick={() => toggleShowMenu(true)}
+          >
+            <svg
+              className="w-7 h-7"
+              fill="black"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 5h14a1 1 0 010 2H3a1 1 0 110-2zm0 5h14a1 1 0 010 2H3a1 1 0 110-2zm0 5h14a1 1 0 010 2H3a1 1 0 110-2z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
         </div>
-      </header>
-    </>
+      </div>
+
+      {/* ====== Mobile Menu Overlay + Drawer ====== */}
+      {showMenu && (
+        <>
+          {/* Overlay */}
+          <div
+            className="fixed inset-0 bg-black/50 z-40"
+            onClick={() => toggleShowMenu(false)}
+          ></div>
+
+          {/* Side Drawer */}
+          <div
+            className={`fixed top-0 right-0 w-2/3 max-w-xs h-full bg-white shadow-lg p-6 space-y-6 z-50 transform transition-transform duration-300 ${
+              showMenu ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            {/* Close Button */}
+            <button
+              className="absolute top-4 right-4 text-gray-600 hover:text-orange-500"
+              onClick={() => toggleShowMenu(false)}
+            >
+              ✕
+            </button>
+
+            {/* Links */}
+            <Link
+              to="/login"
+              className="block text-lg hover:text-orange-500"
+              onClick={() => toggleShowMenu(false)}
+            >
+              Profile
+            </Link>
+            <Link
+              to="/"
+              className="block text-lg hover:text-orange-500"
+              onClick={() => toggleShowMenu(false)}
+            >
+              Home
+            </Link>
+            <Link
+              to="/brands"
+              className="block text-lg hover:text-orange-500"
+              onClick={() => toggleShowMenu(false)}
+            >
+              Brands
+            </Link>
+            <Link
+              to="/Onroadprice"
+              className="block text-lg hover:text-orange-500"
+              onClick={() => toggleShowMenu(false)}
+            >
+              Get OnRoad Price
+            </Link>
+            <Link
+              to="/about"
+              className="block text-lg hover:text-orange-500"
+              onClick={() => toggleShowMenu(false)}
+            >
+              About
+            </Link>
+          </div>
+        </>
+      )}
+    </header>
   );
 }

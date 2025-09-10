@@ -9,6 +9,7 @@ import Models from "./pages/Models.jsx";
 import Onroadprice from "./components/Onroadprice.jsx";
 import PriceProvider from "./context/PriceProvider.jsx";
 import FinalPrice from "./components/FinalPrice.jsx";
+import Loginpage from "./components/Loginpage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -29,6 +30,7 @@ createRoot(document.getElementById("root")).render(
               element={<FinalPrice />}
             />
           </Route>
+          <Route path="login" element={<Loginpage />} />
         </Routes>
       </BrowserRouter>
     </PriceProvider>
